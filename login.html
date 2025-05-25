@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Login - Highway</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1f294d 0%, #691457 100%);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+  }
+
+  .login-container {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    padding: 40px 50px;
+    width: 360px;
+    box-shadow: 0 8px 32px 0 rgba(30, 31, 36, 0.37);
+    text-align: center;
+  }
+
+  .login-container h2 {
+    margin-bottom: 30px;
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: 1.2px;
+  }
+
+  .input-group {
+    margin-bottom: 25px;
+    text-align: left;
+  }
+
+  label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    transition: background 0.3s ease;
+  }
+
+  input[type="text"]::placeholder,
+  input[type="password"]::placeholder {
+    color: #dde1e7;
+  }
+
+  input[type="text"]:focus,
+  input[type="password"]:focus {
+    background: rgba(255,255,255,0.30);
+  }
+
+  button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background-color: #19248d;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    letter-spacing: 1px;
+  }
+
+  button:hover {
+    background-color: #201b79;
+  }
+
+  .error-message {
+    color: #f14d4d;
+    margin-bottom: 15px;
+    font-weight: 600;
+    display: none;
+  }
+
+  .footer-text {
+    margin-top: 20px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .footer-text a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .footer-text a:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+  <div class="login-container" role="main">
+    <h2>Selamat Datang</h2>
+    <div id="error" class="error-message" role="alert" aria-live="assertive"></div>
+    <form id="loginForm" novalidate>
+      <div class="input-group">
+        <label for="username">Nama Pengguna atau Email</label>
+        <input type="text" id="username" name="username" placeholder="Masukkan nama pengguna/email" autocomplete="username" required aria-required="true" />
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Masukkan password" autocomplete="current-password" required aria-required="true" />
+      </div>
+      <button type="submit" aria-label="Login to your account">Login</button>
+    </form>
+  </div>
+
+<script>
+  const loginForm = document.getElementById('loginForm');
+  const errorDiv = document.getElementById('error');
+
+  loginForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    errorDiv.style.display = 'none';
+    errorDiv.textContent = '';
+
+    const username = loginForm.username.value.trim();
+    const password = loginForm.password.value.trim();
+
+    if (!username) {
+      errorDiv.textContent = 'Mohon masukkan nama pengguna atau email.';
+      errorDiv.style.display = 'block';
+      loginForm.username.focus();
+      return;
+    }
+
+    if (!password) {
+      errorDiv.textContent = 'Mohon masukkan.';
+      errorDiv.style.display = 'block';
+      loginForm.password.focus();
+      return;
+    }
+
+    // For demo, just show successful login alert.
+    window.location.href="index.html";   
+  });
+</script>
+</body>
+</html>
+
